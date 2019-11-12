@@ -21,8 +21,8 @@ Browse all the rooftops in the browser
 3. Locate to the API folder
 `cd autumnal-polyphonic/api`
 
-4. Install deps
-`npm install`
+4. Install deps & build
+`npm install` then `npm run build`
 
 5. Start the API
 `npm start`
