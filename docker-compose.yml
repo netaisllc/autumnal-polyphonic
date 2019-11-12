@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  # API service
+  server:
+    build: api/
+    # command: "npm start"
+    ports:
+      - "3000:3000"
+  # application UI
+  client:
+    build: app/
+    # command: "serve -s ."
+    ports:
+      - "5000:5000"

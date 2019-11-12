@@ -1,0 +1,51 @@
+{
+	"name": "api",
+	"version": "1.0.0",
+	"description": "Consolidation api for FS test app",
+	"main": "dist/index.ts",
+	"scripts": {
+		"build": "clear; npm run prettier:write; rimraf ./dist && tsc",
+		"build:run": "clear; npm run build && node dist/server.js",
+		"dev": "clear; nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+		"prettier:check": "prettier --check src/**/*.{ts,tsx,jsx}",
+		"prettier:write": "prettier --write src/**/*.{ts,tsx,jsx}",
+		"start": "clear; node dist/server.js",
+		"test": "clear; echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "CSSian",
+	"license": "MIT",
+	"dependencies": {
+		"@hapi/joi": "16.1.7",
+		"bluebird": "3.7.1",
+		"compression": "1.7.4",
+		"cors": "2.8.5",
+		"express": "4.17.1",
+		"express-joi-validation": "4.0.1",
+		"joi-extract-type": "15.0.1",
+		"query-string": "6.8.3",
+		"request": "2.88.0",
+		"request-promise": "4.2.4",
+		"sharp": "0.23.2",
+		"simple-node-logger": "18.12.23",
+		"yargs": "14.2.0"
+	},
+	"devDependencies": {
+		"@types/bluebird": "3.5.28",
+		"@types/compression": "1.0.1",
+		"@types/cors": "2.8.6",
+		"@types/express": "4.17.2",
+		"@types/hapi__joi": "15.0.0",
+		"@types/joi": "14.3.4",
+		"@types/node": "12.12.5",
+		"@types/query-string": "6.3.0",
+		"@types/request": "2.48.3",
+		"@types/request-promise": "4.1.44",
+		"@types/sharp": "0.23.0",
+		"eslint": "6.6.0",
+		"nodemon": "1.19.4",
+		"prettier": "1.18.2",
+		"rimraf": "3.0.0",
+		"ts-node": "8.4.1",
+		"typescript": "3.6.4"
+	}
+}
