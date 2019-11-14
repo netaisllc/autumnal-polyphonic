@@ -1,6 +1,7 @@
 <script>
     import { getContext } from 'svelte';
-    import { largestValue, smallestValue }  from '../api/property.js';
+    import { largestValue, smallestValue }  from '../api/property';
+    import { placeholder } from '../api/placeholder';
 
     const stateMachine = getContext('stm');
     export let thisProperty;
@@ -66,6 +67,7 @@
         overflow: hidden;       
     }
     .container-image-stats .image {
+        background-color: #eee;
         height: 100%;
         width: 50%;
     }
@@ -114,7 +116,7 @@
         {thisProperty.address}</div>
     <div class="container-image-stats">
         <div class="image">
-            <img alt="Property" src={thisProperty.imageURI}/>
+            <img alt="Aerial view of property" src="{thisProperty.imageURI ? thisProperty.imageURI : placeholder}"/>
         </div>
         <div class="stats">
             <div class="heading">Statistics</div>

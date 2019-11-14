@@ -1,8 +1,9 @@
 <script>
     import { fade } from 'svelte/transition';
     import { getContext } from 'svelte';
-    import { listProperties, listState } from '../store/stores.js';
-    import Details from './Details.svelte';
+    import { listProperties, listState } from '../store/stores';
+    import { placeholder } from '../api/placeholder';
+    import Details from './Details';
 
     const stateMachine = getContext('stm');
 
@@ -97,7 +98,7 @@
                 {#each $listProperties as property, i (property.id) }
                     <div class="row">
                         <div class="image">
-                            <img alt="Property" src="{property.imageURI ? property.imageURI : placholder}"/>
+                            <img alt="Property" src="{property.imageURI ? property.imageURI : placeholder}"/>
                         </div> 
                         <div><span>Address:</span> {property.address}</div> 
                         <div><span>Location:</span> ({property.coordinates[1]}, {property.coordinates[0]})</div>
