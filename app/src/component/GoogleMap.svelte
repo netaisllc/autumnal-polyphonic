@@ -64,7 +64,6 @@
               const m = dropMarker(baseMap, property)
               // Save markers so they can be removed
               if(m) markers.push(m);  
-              console.log(m)          
             });
 
             // Make a single info window

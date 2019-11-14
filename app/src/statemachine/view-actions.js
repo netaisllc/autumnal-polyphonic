@@ -1,5 +1,5 @@
 // Actions specific to the View state
-import { listProperties, listState, listThisProperty } from '../store/stores';
+import { listProperties, listState, listThisProperty, thisProperty } from '../store/stores';
 
 export const clear = (context, event) => {
 	console.log('-> Transition to state: Clear.', event);

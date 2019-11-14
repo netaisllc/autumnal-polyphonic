@@ -1,11 +1,25 @@
 // Return the smallest distance from collection, but
 // ignoring zero.
-export const closestNeighbor = (distances) => {
-	if (distances && distances.length > 0) {
-		const result = distances.filter((dist) => dist > 0);
+export const smallestValue = (collection) => {
+	if (collection && collection.length > 0) {
+		const result = collection.filter((member) => member > 0);
 		if (result && result.length > 0) {
 			const min = result.reduce((a, b) => Math.min(a, b));
 			return min;
+		}
+		return 0;
+	}
+	return 0;
+};
+
+// Return the largest value from the collection or Infinity
+// TODO Make this better, don't return a zero value
+export const largestValue = (collection) => {
+	if (collection && collection.length > 0) {
+		const result = collection.filter((member) => member > 0);
+		if (result && result.length > 0) {
+			const max = result.reduce((a, b) => Math.max(a, b));
+			return max;
 		}
 		return 0;
 	}
@@ -53,7 +67,7 @@ export const makeInfoWindowContent = (property) => {
 		`<hr class="padded"/>` +
 		`<p class="info">Latitude/Longitude: <span>${property.coordinates[1]}, ${property.coordinates[0]}</span>` +
 		`<p class="info padded">Estimated value: <span>${property.estimatedValue}</span></p>` +
-		`<p class="info padded">Closest building: <span>${closestNeighbor(property.buildingDistances)}</span></p>` +
+		`<p class="info padded">Closest building: <span>${smallestValue(property.buildingDistances)}</span></p>` +
 		`<p class="info">Parcel area: <span>${property.parcelArea}</span></p>` +
 		`<p class="info padded">Zone density: <span>${property.zoneDensity}</span></p>`;
 	return contentString;
