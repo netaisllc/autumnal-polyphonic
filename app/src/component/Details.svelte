@@ -1,10 +1,9 @@
 <script>
     import { getContext } from 'svelte';
     import { largestValue, smallestValue }  from '../api/property';
-    import { placeholder } from '../api/placeholder';
+    import { thisProperty } from '../store/stores';
 
     const stateMachine = getContext('stm');
-    export let thisProperty;
     
     const closeDetails = () => {
         stateMachine.send({
@@ -113,28 +112,28 @@
     </div>
     <div class="title">
         <i class="material-icons">my_location</i>
-        {thisProperty.address}</div>
+        {$thisProperty.address}</div>
     <div class="container-image-stats">
         <div class="image">
-            <img alt="Aerial view of property" src="{thisProperty.imageURI ? thisProperty.imageURI : placeholder}"/>
+            <img alt="Aerial view of property" src={$thisProperty.imageURI}/>
         </div>
         <div class="stats">
             <div class="heading">Statistics</div>
-            <div><span>Location</span>{thisProperty.coordinates[1]}, {thisProperty.coordinates[0]}</div>
-            <div><span>Estimated value</span>{thisProperty.estimatedValue}</div>
+            <div><span>Location</span>{$thisProperty.coordinates[1]}, {$thisProperty.coordinates[0]}</div>
+            <div><span>Estimated value</span>{$thisProperty.estimatedValue}</div>
             <hr/>
-            <div><span>Parcel area</span>{thisProperty.parcelArea}</div>
-            <div><span>Zone density</span>{thisProperty.zoneDensity[0]}</div>
+            <div><span>Parcel area</span>{$thisProperty.parcelArea}</div>
+            <div><span>Zone density</span>{$thisProperty.zoneDensity[0] ? $thisProperty.zoneDensity[0] : 'Not available'}</div>
             <hr />
-            { #if !thisProperty.hasNotes }
+            { #if !$thisProperty.hasNotes }
                 <div class="filings">
                     <div class="topic">Legal filings</div>
                     <div><i class="material-icons">turned_in_not</i></div>
                 </div>
                 <hr/>
             { /if }
-            <div><span>Nearest neighbor</span>{smallestValue(thisProperty.buildingDistances)}</div>
-            <div><span>Largest neighbor</span>{largestValue(thisProperty.buildingAreas)}</div>
+            <div><span>Nearest neighbor</span>{smallestValue($thisProperty.buildingDistances)}</div>
+            <div><span>Largest neighbor</span>{largestValue($thisProperty.buildingAreas)}</div>
         </div>
     </div>
 </section>

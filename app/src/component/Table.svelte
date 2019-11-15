@@ -2,7 +2,6 @@
     import { fade } from 'svelte/transition';
     import { getContext } from 'svelte';
     import { listProperties, listState } from '../store/stores';
-    import { placeholder } from '../api/placeholder';
     import Details from './Details';
 
     const stateMachine = getContext('stm');
@@ -23,9 +22,10 @@
         thisProperty = property;
         stateMachine.send({
             stm: stateMachine,
-            type: 'DETAILS'
+            type: 'DETAILS',
+            property: property
         });        
-    }  
+    }
 </script>
 
 <style>
@@ -86,7 +86,7 @@
        
 <section in:fade>
     { #if showDetails }
-        <Details thisProperty={thisProperty}/>
+        <Details />
     { :else }
         { #if !$listProperties || $listProperties.length < 1 }
             <div class="notice">No properties were located.</div>
@@ -98,7 +98,7 @@
                 {#each $listProperties as property, i (property.id) }
                     <div class="row">
                         <div class="image">
-                            <img alt="Property" src="{property.imageURI ? property.imageURI : placeholder}"/>
+                            <img alt="Property" src={property.imageURI}/>
                         </div> 
                         <div><span>Address:</span> {property.address}</div> 
                         <div><span>Location:</span> ({property.coordinates[1]}, {property.coordinates[0]})</div>

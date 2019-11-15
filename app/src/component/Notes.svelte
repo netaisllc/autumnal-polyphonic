@@ -47,6 +47,10 @@
         to be fixed in regard to <i>host</i> and <i>port</i> as specified in the Docker configuration.
     </div>
 
+    <div>&bull; <b>Image processing</b>: the API layer makes use of a Node package named <b>Sharp</b> which ships with its own binaries; thus, platform differences might cause havoc. It is 
+        generally well-behaved on MacOS and Ubuntu. I didn't test it on Windows.
+    </div>
+
     <div>&bull; <b>UI</b>: the application UI was written in <b>JavaScript</b> using the <b>Svelte</b> library. It, too, does not employ authentication and assumes the NodeJS API is fixed
     in regard to <i>host</i> (<span class="code">localhost</span>) and <i>port</i> (<span class="code">3000</span>). It has no knowledge of the Docker service, but (sigh) a lot
     of knowledge of the Google Maps API.</div>
@@ -66,11 +70,8 @@
     <div>&bull; Some UI state conditions involving the drawer (side panel) are not handled very well.</div>
     <div>&bull; Data input elements are not validated client side, and the UI doesn't handle the API-side validation very well.</div>
     <div>&bull; There is a complicated bug in regard to map search, markers and zooming. This is as much a "policy" or "behavior" bug than code. We punted.</div>
-    <div>&bull; There is <span class="bad">bad bug</span> in the consolidating API wherein it will sometimes fail to return a useful response to the UI. The error is in the API's handling of certain 
-        conditions of response from the 3rd-party service, and there wasn't time to fully track it down. <u>The workaround is to "refresh" the page.</u> 
-
-    <p></p>
-
-
+    <div>&bull; There is fairly <span class="bad">bad bug</span> in the consolidating API wherein it will sometimes fail to return a useful response to the UI. The error is in the API's handling of certain 
+        conditions of response from the 3rd-party service, and there wasn't time to fully track it down. It seems most noticeable in lack of images on first-time queries. 
+        <u>The workaround is to try the query again.</u> 
    
 </section>

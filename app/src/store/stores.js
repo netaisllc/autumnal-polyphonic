@@ -37,3 +37,4 @@ export const topbar = writable({
 
 export const listProperties = writable([]);
 export const listState = writable('');
+export const thisProperty = writable();

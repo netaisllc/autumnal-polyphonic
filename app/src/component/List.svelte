@@ -314,7 +314,7 @@
         { /if }
 
         { #if showProperties }
-        <Table />          
+        <Table latitude={latitude} longitude={longitude} radius={radius}/>          
         { /if }        
     </div>
 </section>

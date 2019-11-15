@@ -4,6 +4,7 @@
 import BluPromise from "bluebird";
 import request from "request-promise";
 import { resize } from "../helpers/resizer";
+import placeholder from "../helpers/placeholder";
 
 const createOptions = (id: string): any => {
   let o = {
@@ -30,7 +31,10 @@ const fetchImageURIs = async (propIds: string[], log: any) => {
         image: data ? data : null
       };
     } catch (err) {
-      return err;
+      return {
+        id: id,
+        image: placeholder
+      };
     }
   };
 

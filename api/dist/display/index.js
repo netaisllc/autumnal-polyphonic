@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const bluebird_1 = __importDefault(require("bluebird"));
 const request_promise_1 = __importDefault(require("request-promise"));
 const resizer_1 = require("../helpers/resizer");
+const placeholder_1 = __importDefault(require("../helpers/placeholder"));
 const createOptions = (id) => {
     let o = {
         // Expect binary data
@@ -41,7 +42,10 @@ const fetchImageURIs = (propIds, log) => __awaiter(void 0, void 0, void 0, funct
             };
         }
         catch (err) {
-            return err;
+            return {
+                id: id,
+                image: placeholder_1.default
+            };
         }
     });
     // XHR helper
