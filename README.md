@@ -1,5 +1,5 @@
 # autumnal-polyphonic
-Browse all the rooftops in the browser
+Proof of concept; not optimized for performance, supportability, nor platform.
 
 ## RUNNING THE PROJECT FROM THE REPO
 
@@ -9,7 +9,7 @@ Browse all the rooftops in the browser
 
 **In a NEW terminal window,**
 
-1. Start the `zesty-fs` docker service using default host and ports
+1. Start the `acme-fs` docker service using default host and ports
 
 -------------------------
 
@@ -47,7 +47,7 @@ A more involved query is as follows:
 
 9. Run an HTTP server to serve the UI on port 5000.
 Any local http server will suffice as long as the port can be configured to 5000.
-(The port is fixed to tht value because I configured my Google API credential to expect it.)
+(The port is fixed to tht value because I configured a Google API credential to expect it.)
 
 For example,the following command uses the Node package 'serve':
 `serve -l 5000`  or simply `serve` as that package defaults to port 5000.
@@ -55,11 +55,3 @@ For example,the following command uses the Node package 'serve':
 10. Observe the UI on localhost:5000
 
 -------------------------
-
-
-You are not expected to build the application from its components; source is provided 
-for review purposes.
-
-Kevin McGee
-netaisllc@gmail.com
-415-990-7169
