@@ -25,7 +25,7 @@
 		"query-string": "6.8.3",
 		"request": "2.88.0",
 		"request-promise": "4.2.4",
-		"sharp": "0.23.2",
+		"sharp": "0.30.5",
 		"simple-node-logger": "18.12.23",
 		"yargs": "14.2.0"
 	},
